@@ -9,30 +9,27 @@
   author: none,
   affiliation: none,
   logo: none,
-  language: "de",
+  language: "zh",
+  region: "tw",
   show-outline: true,
   compact-mode: false,
   heading-color: blue,
-  heading-font: "Ubuntu", // recommended alternatives: "Fira Sans", "Lato", "Source Sans Pro"
+  heading-font: "Noto Sans CJK TC", // recommended alternatives: "Fira Sans", "Lato", "Source Sans Pro"
+  body-font: "Noto Sans CJK TC",
+  body-size: 11pt,
+  // heading font is used in this size for kind of "information blocks"
+  info-size: 10pt ,             
+  // heading font is used in this size for different sorts of labels            
+  label-size: 9pt,
+  date: datetime.today(),
   body,
 ) = {
 
   // ----- Global Parameters ------------------------
 
   set document(title: doc-title, author: author)
-  set text(lang: language)
+  set text(lang: language, region: "tw")
 
-
-  let body-font = "Vollkorn"
-  let body-size = 11pt
-  // let heading-font = "Ubuntu"
-
-  // heading font is used in this size for kind of "information blocks"
-  let info-size = 10pt              
-  
-  // heading font is used in this size for different sorts of labels            
-  let label-size = 9pt                          
-  
   // are we inside or outside of the outline (for roman/arabic page numbers)?
   let in-outline = state("in-outline", if compact-mode {false} else {true})    
 
@@ -49,6 +46,7 @@
       heading-font,
       heading-color,
       info-size,
+      date,
     )
   } 
 
@@ -178,6 +176,8 @@
         "Inhoud"
       } else if language == "pt" {
         "Índice"
+      } else if (language, region) == ("zh", "tw") {
+        "目錄"
       } else if language == "zh" {
         "目录"
       } else if language == "ja" {
@@ -215,6 +215,7 @@
       info-size,                
       body-size,
       label-size,
+      date,
     )
   }
 
